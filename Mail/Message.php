@@ -13,6 +13,7 @@
 namespace Excellence\EmailAttachment\Mail;
 
 use Zend\Mime\Mime;
+use Zend\Mime\Part;
 use Zend\Mime\PartFactory;
 use Zend\Mail\MessageFactory as MailMessageFactory;
 use Zend\Mime\MessageFactory as MimeMessageFactory;
@@ -236,6 +237,15 @@ class Message implements \Magento\Framework\Mail\MailMessageInterface
      */
     public function setMessageType($type)
     {
+        return $this;
+    }
+
+    /**
+     * @param Part $part
+     * @return $this
+     */
+    public function addPart(Part $part) {
+        $this->parts[] = $part;
         return $this;
     }
 }
